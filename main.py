@@ -38,8 +38,8 @@ I'm a bot :)"""
         if url.find("streamable.com/") != -1:
             if str(submission.title) not in history:
                 history[str(submission.title)] = 1
-                print("Working On", url)
                 link, title = getVideoLinkTitle(url)
+                print("Working On", link)
                 submission.reply(replyTemplate.format(title, link))
                 print("Commented Successfully")
     return history
