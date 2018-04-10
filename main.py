@@ -25,23 +25,23 @@ def getVideoLinkTitle(url):
 
 
 # Getting Posts
-def getSubmissions(reddit):
-    subreddit = reddit.subreddit('test')
-    replyTemplate = """[{}]({})
+def comment(reddit):
+    for subreddit in open('subreddits.txt'):
+        replyTemplate = """[{}]({})
 
 
-^^Link ^^for ^^Indians ^^who ^^can't ^^access ^^Streamable
+    ^^Link ^^for ^^who ^^can't ^^access ^^Streamable
 
-I'm a bot :)"""
-    for submission in subreddit.new(limit=50):
-        url = submission.url
-        if url.find("streamable.com/") != -1:
-            if str(submission.title) not in history:
-                history[str(submission.title)] = 1
-                link, title = getVideoLinkTitle(url)
-                print("Working On", link)
-                submission.reply(replyTemplate.format(title, link))
-                print("Commented Successfully")
+    I'm a bot :)"""
+        for submission in subreddit.new(limit=50):
+            url = submission.url
+            if url.find("streamable.com/") != -1:
+                if str(submission.title) not in history:
+                    history[str(submission.title)] = 1
+                    print("Working On", url)
+                    link, title = getVideoLinkTitle(url)
+                    submission.reply(replyTemplate.format(title, link))
+                    print("Commented Successfully")
     return history
 
 
@@ -57,5 +57,5 @@ history = {}
 # getting new posts
 while True:
     print("Running")
-    history = getSubmissions(reddit)
+    history = comment(reddit)
     time.sleep(30)
