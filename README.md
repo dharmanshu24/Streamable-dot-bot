@@ -1,5 +1,5 @@
 # Streamable-dot-bot
-This Reddit Bot comments streamable video links for those who can't access streamable website
+This Reddit Bot comments Streamable video links for those who can't access streamable website
 
 # Requirements
 1. Install pip3
