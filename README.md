@@ -25,13 +25,12 @@ Create Reddit application
    string as your `client_id`.
 6. Copy the 27 character "secret" string into the `client_secret` field.
 7. Add one subreddit per line in `subreddit.txt` file.
+8. Rename `user.ini.sample` to `user.ini` open it and enter `client_id`, `client_secret`, `username` and `password`
 
 Username and password are simply your Reddit login credentials for the account that will be used.
 
 Run the `main.py` file
 
 `python3 main.py`
-
-Enter `client_id`,`client-secret`,`password`,`username`
 
 Now bot will start searching for posts containing streamable links and comment accordingly.
