@@ -18,6 +18,14 @@ except Exception:
     pass
 
 
+replyTemplate = """[{}]({})
+
+
+^^Link ^^for ^^who ^^can't ^^access ^^Streamable
+
+^^I'm ^^a ^^bot ^^:)"""
+
+
 def getVideoLinkTitle(url):
     print("Url =", url)
     res = requests.get(url)
@@ -37,13 +45,8 @@ def getVideoLinkTitle(url):
 
 # Getting Posts
 def comment(reddit):
-    for subreddit in open('subreddits.txt'):
-        replyTemplate = """[{}]({})
-
-
-    ^^Link ^^for ^^who ^^can't ^^access ^^Streamable
-
-    ^^I'm ^^a ^^bot ^^:)"""
+    for subreddits in open('subreddits.txt'):
+        subreddit = reddit.subreddit(subreddits[:-1])
         for submission in subreddit.new(limit=50):
             url = submission.url
             if url.find("streamable.com/") != -1:
